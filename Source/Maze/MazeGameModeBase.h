@@ -13,5 +13,7 @@ UCLASS()
 class MAZE_API AMazeGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
+
+	virtual void StartPlay() override;
 	
 };
