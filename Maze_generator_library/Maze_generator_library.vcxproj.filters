@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="contener">
+      <UniqueIdentifier>{be85e755-86c1-43e7-a6b3-99fe563e9ce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="algorythm">
+      <UniqueIdentifier>{206b4777-7cb7-4750-a901-a1a53265694b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="matrix.h">
+      <Filter>contener</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.hpp">
+      <Filter>contener</Filter>
+    </ClInclude>
+    <ClInclude Include="algorythm_mod.hpp">
+      <Filter>algorythm</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>contener</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>contener</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="matrix.cpp">
+      <Filter>contener</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
