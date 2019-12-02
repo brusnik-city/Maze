@@ -19,6 +19,16 @@ AFirstCharacter::AFirstCharacter()
 	// Allow to control camera rotation.
 	CameraComponent->bUsePawnControlRotation = true;
 
+	TriggerCapsule = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Trigger Capsule"));
+	TriggerCapsule->InitCapsuleSize(55.f, 96.0f);;
+	TriggerCapsule->SetCollisionProfileName(TEXT("Trigger"));
+	TriggerCapsule->SetupAttachment(RootComponent);
+
+	// bind trigger events
+	TriggerCapsule->OnComponentBeginOverlap.AddDynamic(this, &AFirstCharacter::OnOverlapBegin);
+	TriggerCapsule->OnComponentEndOverlap.AddDynamic(this, &AFirstCharacter::OnOverlapEnd);
+
+	Current_door = NULL;
 }
 
 // Called when the game starts or when spawned
@@ -57,6 +67,9 @@ void AFirstCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComp
 	// Set up "jump" bindings.
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AFirstCharacter::StartJump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &AFirstCharacter::StopJump);
+
+	// Set up "Action" bindings.
+	PlayerInputComponent->BindAction("Action", IE_Pressed, this, &AFirstCharacter::OnAction);
 }
 
 void AFirstCharacter::MoveForward(float Value)
@@ -82,3 +95,32 @@ void AFirstCharacter::StopJump()
 {
 	bPressedJump = false;
 }
+
+void AFirstCharacter::OnAction()
+{
+	FVector ForwardVector = CameraComponent->GetForwardVector();
+
+	if (Current_door)
+	{
+		Current_door->Switch_door(ForwardVector);
+	}
+}
+
+// overlap on begin function
+void AFirstCharacter::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	if (OtherActor && (OtherActor != this) && OtherComp && OtherActor->GetClass()->IsChildOf(ASliding_door::StaticClass()))
+	{
+		Current_door = Cast<ASliding_door>(OtherActor);
+	}
+}
+
+// overlap on end function
+void AFirstCharacter::OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	if (OtherActor && (OtherActor != this) && OtherComp)
+	{
+		Current_door = NULL;
+	}
+}
+
