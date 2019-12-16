@@ -22,7 +22,7 @@ ASliding_door::ASliding_door()
 	Door = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Door"));
 	Door->SetupAttachment(RootComponent);
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> DoorAsset(TEXT("/Game/StarterContent/Props/SM_Door.SM_Door"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> DoorAsset(TEXT("/Game/Meshes/door.door"));
 
 	if (DoorAsset.Succeeded())
 	{
