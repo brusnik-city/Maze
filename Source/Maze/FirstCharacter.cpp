@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-#include "Maze.h"
 #include "FirstCharacter.h"
+#include "Maze.h"
+
 
 // Sets default values
 AFirstCharacter::AFirstCharacter()

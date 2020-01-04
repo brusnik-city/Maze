@@ -49,7 +49,7 @@ void ASliding_door::BeginPlay()
 {
 	Super::BeginPlay();
 
-	DrawDebugBox(GetWorld(), GetActorLocation(), Box_component->GetScaledBoxExtent(), FQuat(GetActorRotation()), FColor::Turquoise, true, -1, 0, 2);
+	//DrawDebugBox(GetWorld(), GetActorLocation(), Box_component->GetScaledBoxExtent(), FQuat(GetActorRotation()), FColor::Turquoise, true, -1, 0, 2);
 	
 }
 
