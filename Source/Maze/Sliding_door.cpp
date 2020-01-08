@@ -27,7 +27,7 @@ ASliding_door::ASliding_door()
 	if (DoorAsset.Succeeded())
 	{
 		Door->SetStaticMesh(DoorAsset.Object);
-		Door->SetRelativeLocation(FVector(0.0f, 50.0f, -100.0f));
+		Door->SetRelativeLocation(FVector(0.0f, 50.0f, -350.0f));
 		Door->SetWorldScale3D(FVector(1.f));
 	}
 
