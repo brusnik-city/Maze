@@ -111,7 +111,8 @@ void AFirstCharacter::OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, 
 {
 	if (OtherActor && (OtherActor != this) && OtherComp && OtherActor->GetClass()->IsChildOf(ASliding_door::StaticClass()))
 	{
-		Current_door = Cast<ASliding_door>(OtherActor);
+		if(this->GetActorLocation().Z>400)
+a			Current_door = Cast<ASliding_door>(OtherActor);
 	}
 }
 
